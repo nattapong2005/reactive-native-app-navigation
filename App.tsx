@@ -1,29 +1,46 @@
-import "./global.css"
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import "./global.css";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from './screens/HomeScreen';
+import HomeScreen from "./screens/HomeScreen";
 import DetailScreen from "./screens/DetailScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#3b82f6',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          }
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Detail" component={DetailScreen}/>
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          options={{
+            title: "Home eiei",
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => (
+              <span style={{ fontSize: size, color }}>Home</span>
+            ),
+          }}
+        >
+          {() => (
+            <Stack.Navigator
+              screenOptions={{
+                headerStyle: {
+                  backgroundColor: "#3b82f6",
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                },
+              }}
+            >
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Detail" component={DetailScreen} />
+            </Stack.Navigator>
+          )}
+        </Tab.Screen>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
