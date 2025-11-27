@@ -5,7 +5,8 @@ const CartScreen = () => {
   return (
     <ScrollView className='flex-1 bg-gray-50'>
       <View className='p-6'>
-        <Text className='text-3xl font-bold'>My cart</Text>
+        <Text className='text-4xl font-bold'>My cart</Text>
+        
       </View>
     </ScrollView>
   )
